@@ -502,23 +502,23 @@ abstract class AbstractGenerator implements GeneratorInterface
 
         if ($this->fileExists($filename)) {
             if (!$this->isFile($filename)) {
-                throw new \sfExcption(sprintf(
+                throw new \sfException(sprintf(
                     'The output file \'%s\' already exists and it is a %s.',
                     $filename, $this->isDir($filename) ? 'directory' : 'link'
                 ));
             } elseif (false === $overwrite) {
-                throw new \sfExcption(sprintf(
+                throw new \sfException(sprintf(
                     'The output file \'%s\' already exists.',
                     $filename
                 ));
             } elseif (!$this->unlink($filename)) {
-                throw new \sfExcptionn(sprintf(
+                throw new \sfException(sprintf(
                     'Could not delete already existing output file \'%s\'.',
                     $filename
                 ));
             }
         } elseif (!$this->isDir($directory) && !$this->mkdir($directory)) {
-            throw new \sfExcption(sprintf(
+            throw new \sfException(sprintf(
                 'The output file\'s directory \'%s\' could not be created.',
                 $directory
             ));
